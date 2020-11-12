@@ -1,6 +1,7 @@
 package com.comp301.a08nonograms.model;
 
 public interface Model extends Board, Clues {
+  Clues getClue();
   /** Getter method for the total number of puzzles in the puzzle list */
   int getPuzzleCount();
 

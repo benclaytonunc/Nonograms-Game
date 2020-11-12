@@ -19,8 +19,8 @@ public class BoardImpl implements Board {
   private int numberOfColumns;
 
   public BoardImpl(int numberOfColumns, int numberOfRows) {
-    this.numberOfColumns = numberOfColumns;
     this.numberOfRows = numberOfRows;
+    this.numberOfColumns = numberOfColumns;
     this.board = new select[numberOfRows][numberOfColumns];
     clear();
   }
@@ -56,14 +56,13 @@ public class BoardImpl implements Board {
     }
     if (board[row][col] == select.SHADED) {
       board[row][col] = select.SPACE;
-      // potential error amountShaded--;
     } else if (board[row][col] == select.SPACE) {
       board[row][col] = select.SPACE;
       amountShaded++;
     } else {
       board[row][col] = select.SHADED;
-      amountShaded++;
       AmountEliminated--;
+      amountShaded++;
     }
   }
 
@@ -81,8 +80,8 @@ public class BoardImpl implements Board {
       AmountEliminated++;
     } else {
       board[row][col] = select.SHADED;
-      amountShaded++;
       AmountEliminated--;
+      amountShaded++;
     }
   }
 

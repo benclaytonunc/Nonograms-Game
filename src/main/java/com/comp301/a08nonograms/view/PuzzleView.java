@@ -23,8 +23,8 @@ public class PuzzleView {
     HBox layout = new HBox();
     layout.setAlignment(Pos.CENTER_LEFT);
     layout.setSpacing(5);
-    layout.setPadding(new Insets(5, 5, 5, 5));
     layout.setStyle("-fx-border-color: #888888");
+    layout.setPadding(new Insets(5, 5, 5, 5));
 
     Button downB = new Button("\u25BC");
     downB.setOnAction(

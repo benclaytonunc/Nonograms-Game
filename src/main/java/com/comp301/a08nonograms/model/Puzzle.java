@@ -16,7 +16,7 @@ public class Puzzle {
   }
 
   public void setPuzzleIndex(int index) {
-    index = index;
+    this.index = index;
   }
 
   public BoardImpl getBoard() {

@@ -43,7 +43,7 @@ public class ModelImpl implements Model {
 
   @Override
   public void setPuzzleIndex(int Index) {
-    puzzle.setPuzzleIndex(Index);
+     puzzle = puzzles.get(Index);
   }
 
   @Override

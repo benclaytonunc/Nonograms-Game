@@ -3,6 +3,10 @@ package com.comp301.a08nonograms.controller;
 import com.comp301.a08nonograms.model.Clues;
 import com.comp301.a08nonograms.model.Model;
 import com.comp301.a08nonograms.model.Puzzle;
+import com.comp301.a08nonograms.model.BoardImpl;
+import javafx.scene.input.MouseEvent;
+
+import java.awt.event.ActionEvent;
 
 public class ControllerImpl implements Controller {
   private Model model;
@@ -45,12 +49,14 @@ public class ControllerImpl implements Controller {
 
   @Override
   public void nextPuzzle() {
-    model.setPuzzleIndex(getPuzzleIndex() + 1);
+    int index = puzzle.getPuzzleIndex() + 1;
+    puzzle.setPuzzleIndex(index);
   }
 
   @Override
   public void prevPuzzle() {
-    model.setPuzzleIndex(getPuzzleIndex() - 1);
+    int index = puzzle.getPuzzleIndex() - 1;
+    puzzle.setPuzzleIndex(index);
   }
 
   @Override
@@ -72,4 +78,6 @@ public class ControllerImpl implements Controller {
   public int getPuzzleCount() {
     return model.getPuzzleCount();
   }
+
+
 }

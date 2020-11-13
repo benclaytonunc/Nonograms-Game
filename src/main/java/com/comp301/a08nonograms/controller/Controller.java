@@ -1,6 +1,8 @@
 package com.comp301.a08nonograms.controller;
 
 import com.comp301.a08nonograms.model.Clues;
+import javafx.scene.input.MouseEvent;
+
 
 public interface Controller {
   /** Gets the clues for the active puzzle board */
@@ -38,4 +40,5 @@ public interface Controller {
 
   /** Getter method for the total number of puzzles in the puzzle library */
   int getPuzzleCount();
+
 }

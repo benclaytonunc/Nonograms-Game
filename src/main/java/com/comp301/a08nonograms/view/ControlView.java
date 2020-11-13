@@ -7,6 +7,8 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 
+import java.awt.event.MouseEvent;
+
 public class ControlView implements FXComponent {
   private final Controller controller;
 
@@ -18,7 +20,9 @@ public class ControlView implements FXComponent {
   public Parent render() {
     StackPane layout = new StackPane();
     layout.setPadding(new Insets(10, 10, 10, 10));
+//changes
 
+  //end
     Button changeButton = new Button("Change Puzzle");
     changeButton.setOnAction(
         (ActionEvent event) -> {

@@ -1,5 +1,9 @@
 package com.comp301.a08nonograms.model;
 
+import javafx.scene.control.Button;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -57,7 +61,8 @@ public class BoardImpl implements Board {
     if (board[row][col] == select.SHADED) {
       board[row][col] = select.SPACE;
     } else if (board[row][col] == select.SPACE) {
-      board[row][col] = select.SPACE;
+   //   board[row][col] = select.SPACE;
+      board[row][col] = select.SHADED;
       amountShaded++;
     } else {
       board[row][col] = select.SHADED;

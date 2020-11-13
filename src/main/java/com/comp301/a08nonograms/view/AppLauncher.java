@@ -1,5 +1,6 @@
 package com.comp301.a08nonograms.view;
 
+import com.comp301.a08nonograms.model.BoardImpl;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -31,7 +32,9 @@ public class AppLauncher extends Application {
           stage.setScene((new Scene(view.render())));
         });
 
-    stage.setTitle("Nanogram");
+    stage.setTitle("Nanogram Game");
     stage.show();
+
+
   }
 }

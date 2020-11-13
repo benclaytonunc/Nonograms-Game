@@ -170,15 +170,15 @@ public class ModelImpl implements Model {
 
   @Override
   public int getRowCluesLength() {
-   // return puzzle.getClue().getRowCluesLength();
-    return puzzle.getClue().getHeight();
+    return puzzle.getClue().getRowCluesLength();
+
    // return puzzle.getClue();
   }
 
   @Override
   public int getColCluesLength() {
-    // return puzzle.getClue().getColCluesLength();
-    return puzzle.getClue().getWidth();
+     return puzzle.getClue().getColCluesLength();
+    // return puzzle.getClue().getWidth();
   }
 
   private void notifyObservers() {

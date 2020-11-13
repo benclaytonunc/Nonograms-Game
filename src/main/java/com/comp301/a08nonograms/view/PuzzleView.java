@@ -1,6 +1,7 @@
 package com.comp301.a08nonograms.view;
 
 import com.comp301.a08nonograms.controller.Controller;
+import com.comp301.a08nonograms.model.BoardImpl;
 import com.comp301.a08nonograms.model.Puzzle;
 import javafx.event.ActionEvent;
 import javafx.geometry.Insets;
@@ -8,6 +9,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 
 public class PuzzleView {
@@ -26,9 +28,19 @@ public class PuzzleView {
     layout.setStyle("-fx-border-color: #888888");
     layout.setPadding(new Insets(5, 5, 5, 5));
 
+    Button clear = new Button("\u239A");
+    clear.setOnAction(
+            (ActionEvent event) -> {
+              controller.clearBoard();
+            });
+    layout.getChildren().add(clear);
+
     Button downB = new Button("\u25BC");
     downB.setOnAction(
         (ActionEvent event) -> {
+          if (Index == 0) {
+            controller.randPuzzle();
+          }
           controller.prevPuzzle();
         });
     layout.getChildren().add(downB);
@@ -36,7 +48,8 @@ public class PuzzleView {
     Button upB = new Button("\u25B2");
     upB.setOnAction(
         (ActionEvent event) -> {
-          controller.nextPuzzle();
+      //    controller.nextPuzzle();
+          new PuzzleView(controller, Index + 1).render();
         });
     layout.getChildren().add(upB);
 
@@ -55,6 +68,6 @@ public class PuzzleView {
   }
 
   private String makeLabelString() {
-    return "Puzzle # " + controller.getPuzzleIndex();
+    return "Puzzle # " + (controller.getPuzzleIndex() + 1);
   }
 }

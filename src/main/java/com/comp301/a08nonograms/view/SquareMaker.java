@@ -10,6 +10,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
+import javafx.scene.text.Text;
 
 import java.awt.*;
 
@@ -37,6 +38,8 @@ public class SquareMaker implements FXComponent {
         int d = k;
         if (controller.isShaded(c, d)) {
           butt.setStyle("-fx-background-color: green");
+        } else if (controller.isEliminated(c, d)) {
+          butt.setStyle("-fx-background-color: #dc143c");
         }
         butt.setOnMousePressed(
             (MouseEvent event) -> {
@@ -48,6 +51,13 @@ public class SquareMaker implements FXComponent {
             });
         grid.add(butt, c, d);
       }
+    }
+    if (controller.isSolved()) {
+      Text text = new Text();
+      text.setText("You Won! good job");
+      text.setX(50);
+      text.setY(50);
+      grid.add(text, 50, 50);
     }
 
     return grid;

@@ -28,6 +28,7 @@ public class ModelImpl implements Model {
 
   @Override
   public Clues getClue() {
+    clues.get(getPuzzleIndex());
     return clue;
   }
 

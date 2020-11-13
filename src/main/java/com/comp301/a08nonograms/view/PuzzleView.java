@@ -37,11 +37,7 @@ public class PuzzleView {
     layout.setStyle("-fx-border-color: #888888");
     layout.setPadding(new Insets(5, 5, 5, 5));
     clues = PuzzleLibrary.create();
-    Puzzle newPuzz = new Puzzle(clues.get(Index), Index);
-    // BoardImpl newPuzzBoard = newPuzz.getBoard();
-   // SquareMaker sqM = new SquareMaker(controller, clues.get(Index).getColCluesLength(), clues.get(Index).getRowCluesLength());
-    // layout.getChildren().add(sqM.render());
-   // controller.nextPuzzle();
+
     Button clear = new Button("\u239A");
     clear.setOnAction(
         (ActionEvent event) -> {

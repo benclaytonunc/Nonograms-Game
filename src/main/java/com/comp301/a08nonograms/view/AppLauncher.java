@@ -34,7 +34,5 @@ public class AppLauncher extends Application {
 
     stage.setTitle("Nanogram Game");
     stage.show();
-
-
   }
 }

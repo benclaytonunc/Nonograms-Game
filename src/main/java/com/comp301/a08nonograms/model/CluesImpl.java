@@ -11,7 +11,7 @@ public class CluesImpl implements Clues {
     }
     this.rowClues = rowClues;
     this.colClues = colClues;
-  /*  for (int[] rowClue : rowClues) {
+    for (int[] rowClue : rowClues) {
       for (int i : rowClue) {
         AmountShaded = AmountShaded + i;
       }
@@ -20,7 +20,6 @@ public class CluesImpl implements Clues {
 
   public int getShadedTotal() {
     return AmountShaded;
-    */
 
   }
 

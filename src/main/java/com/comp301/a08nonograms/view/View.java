@@ -19,14 +19,16 @@ public class View implements FXComponent {
     ControlView controlsView = new ControlView(controller);
     layout.getChildren().add(controlsView.render());
 
-    SquareMaker sqMaker = new SquareMaker(controller, controller.getClues().getHeight(), controller.getClues().getWidth());
+    SquareMaker sqMaker =
+        new SquareMaker(
+            controller, controller.getClues().getHeight(), controller.getClues().getWidth());
     layout.getChildren().add(sqMaker.render());
     // Playlist
     VBox playlist = new VBox();
-    //for (int i = 0; i < controller.getPuzzleCount(); i++) {
-      PuzzleView puzzle = new PuzzleView(controller, 0);
-      playlist.getChildren().add(puzzle.render());
-    //}
+    // for (int i = 0; i < controller.getPuzzleCount(); i++) {
+    PuzzleView puzzle = new PuzzleView(controller, 2);
+    playlist.getChildren().add(puzzle.render());
+    // }
     layout.getChildren().add(playlist);
 
     return layout;

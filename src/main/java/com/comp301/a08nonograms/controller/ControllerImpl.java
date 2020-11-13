@@ -78,6 +78,4 @@ public class ControllerImpl implements Controller {
   public int getPuzzleCount() {
     return model.getPuzzleCount();
   }
-
-
 }

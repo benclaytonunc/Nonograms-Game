@@ -30,9 +30,9 @@ public class PuzzleView {
 
     Button clear = new Button("\u239A");
     clear.setOnAction(
-            (ActionEvent event) -> {
-              controller.clearBoard();
-            });
+        (ActionEvent event) -> {
+          controller.clearBoard();
+        });
     layout.getChildren().add(clear);
 
     Button downB = new Button("\u25BC");
@@ -48,7 +48,7 @@ public class PuzzleView {
     Button upB = new Button("\u25B2");
     upB.setOnAction(
         (ActionEvent event) -> {
-      //    controller.nextPuzzle();
+          //    controller.nextPuzzle();
           new PuzzleView(controller, Index + 1).render();
         });
     layout.getChildren().add(upB);

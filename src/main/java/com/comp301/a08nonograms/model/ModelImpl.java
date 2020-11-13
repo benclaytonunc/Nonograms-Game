@@ -43,7 +43,7 @@ public class ModelImpl implements Model {
 
   @Override
   public void setPuzzleIndex(int Index) {
-     puzzle = puzzles.get(Index);
+    puzzle = puzzles.get(Index);
   }
 
   @Override
@@ -172,12 +172,12 @@ public class ModelImpl implements Model {
   public int getRowCluesLength() {
     return puzzle.getClue().getRowCluesLength();
 
-   // return puzzle.getClue();
+    // return puzzle.getClue();
   }
 
   @Override
   public int getColCluesLength() {
-     return puzzle.getClue().getColCluesLength();
+    return puzzle.getClue().getColCluesLength();
     // return puzzle.getClue().getWidth();
   }
 

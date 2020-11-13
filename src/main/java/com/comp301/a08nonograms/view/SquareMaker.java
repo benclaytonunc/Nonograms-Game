@@ -15,61 +15,50 @@ import javafx.scene.layout.StackPane;
 
 import java.awt.*;
 
-
 public class SquareMaker implements FXComponent {
-    private final Controller controller;
-    private final int height;
-    private final int width;
+  private final Controller controller;
+  private final int height;
+  private final int width;
 
-    public SquareMaker(Controller controller, int height, int width) {
-        this.controller = controller;
-        this.height = height;
-        this.width = width;
+  public SquareMaker(Controller controller, int height, int width) {
+    this.controller = controller;
+    this.height = height;
+    this.width = width;
+  }
+
+  @Override
+  public Parent render() {
+    GridPane grid = new GridPane();
+    // StackPane layout = new StackPane();
+    BoardImpl s = new BoardImpl(height, width);
+    // double [][]rowCol = new double[20][20];
+    for (int i = 0; i < height; i++) {
+      for (int k = 0; k < width; k++) {
+
+        Button butt = new Button();
+
+        int c = i;
+        int d = k;
+        if (controller.isShaded(c, d)) {
+          // Color a = Color.cyan;
+          butt.setStyle("-fx-background-color: green");
+        }
+        butt.setOnAction(
+            (ActionEvent event) -> {
+              // s.toggleCellShaded(c, d);
+              controller.toggleShaded(c, d);
+              //  System.out.println("should toggle" + c + d);
+              // butt.sets
+              //   s.board[c][d] = BoardImpl.select.SHADED;
+
+            });
+        // grid.getChildren().add(butt);
+        grid.add(butt, c, d);
+        // Node = new Rectangle()
+
+      }
     }
 
-
-    @Override
-    public Parent render() {
-        GridPane grid = new GridPane();
-        //StackPane layout = new StackPane();
-        BoardImpl s = new BoardImpl(height, width);
-       // double [][]rowCol = new double[20][20];
-        for (int i = 0; i < height; i++) {
-            for (int k = 0; k < width; k++) {
-
-                Button butt = new Button();
-
-                int c = i;
-                int d = k;
-                if (controller.isShaded(c, d)) {
-                    // Color a = Color.cyan;
-                    butt.setStyle("-fx-background-color: green");
-                }
-                butt.setOnAction(
-                        (ActionEvent event) -> {
-                          // s.toggleCellShaded(c, d);
-                           controller.toggleShaded(c, d);
-                         //  System.out.println("should toggle" + c + d);
-                          // butt.sets
-                         //   s.board[c][d] = BoardImpl.select.SHADED;
-
-                        });
-               // grid.getChildren().add(butt);
-                grid.add(butt, c, d);
-                // Node = new Rectangle()
-
-
-
-                }
-                }
-
-
-
-
-
-        return grid;
-    }
-
-    }
-
-
+    return grid;
+  }
+}

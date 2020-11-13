@@ -20,9 +20,9 @@ public class ControlView implements FXComponent {
   public Parent render() {
     StackPane layout = new StackPane();
     layout.setPadding(new Insets(10, 10, 10, 10));
-//changes
+    // changes
 
-  //end
+    // end
     Button changeButton = new Button("Change Puzzle");
     changeButton.setOnAction(
         (ActionEvent event) -> {

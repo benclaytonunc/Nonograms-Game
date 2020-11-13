@@ -61,7 +61,7 @@ public class BoardImpl implements Board {
     if (board[row][col] == select.SHADED) {
       board[row][col] = select.SPACE;
     } else if (board[row][col] == select.SPACE) {
-   //   board[row][col] = select.SPACE;
+      //   board[row][col] = select.SPACE;
       board[row][col] = select.SHADED;
       amountShaded++;
     } else {

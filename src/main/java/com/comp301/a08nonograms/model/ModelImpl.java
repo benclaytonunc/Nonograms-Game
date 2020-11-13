@@ -61,7 +61,7 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isSolved() {
-    if (puzzle.getBoard().getShadedTotal() != puzzle.getClue().getShadedTotal()) {
+    if (puzzles.get(Index).getBoard().getShadedTotal() != puzzles.get(Index).getClue().getShadedTotal()) {
       return false;
     }
     for (int i = 0; i < getHeight(); i++) {
@@ -71,13 +71,13 @@ public class ModelImpl implements Model {
       for (int k = 0; k < getWidth(); k++) {
         if (isSpace(i, k)) {
           insideCluster = true;
-          if (ClusterSize > puzzle.getClue().getRowClues(i)[clusterIndex]) {
+          if (ClusterSize > puzzles.get(Index).getClue().getRowClues(i)[clusterIndex]) {
             return false;
           }
           ClusterSize++;
         } else {
           if (insideCluster) {
-            if (ClusterSize != puzzle.getClue().getRowClues(i)[clusterIndex]) {
+            if (ClusterSize != puzzles.get(Index).getClue().getRowClues(i)[clusterIndex]) {
               return false;
             } else {
               insideCluster = false;
@@ -97,13 +97,13 @@ public class ModelImpl implements Model {
           return false;
         } else if (isShaded(k, i)) {
           insideCluster = true;
-          if (ClusterSize > puzzle.getClue().getColClues(i)[clusterIndex]) {
+          if (ClusterSize > puzzles.get(Index).getClue().getColClues(i)[clusterIndex]) {
             return false;
           }
           ClusterSize++;
         } else {
           if (insideCluster) {
-            if (ClusterSize != puzzle.getClue().getColClues(i)[clusterIndex]) {
+            if (ClusterSize != puzzles.get(Index).getClue().getColClues(i)[clusterIndex]) {
               return false;
             } else {
               insideCluster = false;

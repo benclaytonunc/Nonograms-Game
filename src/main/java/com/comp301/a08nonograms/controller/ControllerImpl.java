@@ -49,14 +49,22 @@ public class ControllerImpl implements Controller {
 
   @Override
   public void nextPuzzle() {
-    int index = puzzle.getPuzzleIndex() + 1;
-    puzzle.setPuzzleIndex(index);
+    if (model.getPuzzleIndex() >= model.getPuzzleCount()) {
+        throw new RuntimeException();
+    } else {
+      int index = model.getPuzzleIndex() + 1;
+      model.setPuzzleIndex(index);
+    }
   }
 
   @Override
   public void prevPuzzle() {
-    int index = puzzle.getPuzzleIndex() - 1;
-    puzzle.setPuzzleIndex(index);
+    if (model.getPuzzleIndex() <= 0) {
+      throw new RuntimeException();
+    } else {
+      int index = model.getPuzzleIndex() - 1;
+      model.setPuzzleIndex(index);
+    }
   }
 
   @Override

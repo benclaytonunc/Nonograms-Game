@@ -20,7 +20,7 @@ public class ModelImpl implements Model {
       puzzles.add(new Puzzle(clues.get(i), i));
     }
     this.puzzle = puzzles.get(0);
-    this.Index = puzzle.getPuzzleIndex();
+    this.Index = 0;
     this.clues = new ArrayList<>(clues);
     this.observers = new ArrayList<>();
     this.clue = clues.get(Index);
@@ -38,12 +38,15 @@ public class ModelImpl implements Model {
 
   @Override
   public int getPuzzleIndex() {
-    return puzzle.getPuzzleIndex();
+    return Index;
   }
 
   @Override
   public void setPuzzleIndex(int Index) {
-    puzzle = puzzles.get(Index);
+    if (Index >= getPuzzleCount() || Index < 0 ) {
+      throw new RuntimeException("set puzzle index OOB");
+    }
+    this.Index = Index;
   }
 
   @Override
@@ -117,67 +120,67 @@ public class ModelImpl implements Model {
   @Override
   public boolean isShaded(int row, int col) {
 
-    return puzzle.getBoard().isShaded(row, col);
+    return puzzles.get(Index).getBoard().isShaded(row, col);
   }
 
   @Override
   public boolean isEliminated(int row, int col) {
-    return puzzle.getBoard().isEliminated(row, col);
+    return puzzles.get(Index).getBoard().isEliminated(row, col);
   }
 
   @Override
   public boolean isSpace(int row, int col) {
-    return puzzle.getBoard().isSpace(row, col);
+    return puzzles.get(Index).getBoard().isSpace(row, col);
   }
 
   @Override
   public void toggleCellShaded(int row, int col) {
-    puzzle.getBoard().toggleCellShaded(row, col);
+    puzzles.get(Index).getBoard().toggleCellShaded(row, col);
     notifyObservers();
   }
 
   @Override
   public void toggleCellEliminated(int row, int col) {
-    puzzle.getBoard().toggleCellEliminated(row, col);
+    puzzles.get(Index).getBoard().toggleCellEliminated(row, col);
     notifyObservers();
   }
 
   @Override
   public void clear() {
-    puzzle.getBoard().clear();
+    puzzles.get(Index).getBoard().clear();
     notifyObservers();
   }
 
   @Override
   public int getWidth() {
-    return puzzle.getClue().getWidth();
+    return puzzles.get(Index).getClue().getWidth();
   }
 
   @Override
   public int getHeight() {
-    return puzzle.getClue().getHeight();
+    return puzzles.get(Index).getClue().getHeight();
   }
 
   @Override
   public int[] getRowClues(int Index) {
-    return puzzle.getClue().getRowClues(Index);
+    return puzzles.get(Index).getClue().getRowClues(Index);
   }
 
   @Override
   public int[] getColClues(int Index) {
-    return puzzle.getClue().getColClues(Index);
+    return puzzles.get(Index).getClue().getColClues(Index);
   }
 
   @Override
   public int getRowCluesLength() {
-    return puzzle.getClue().getRowCluesLength();
+    return puzzles.get(Index).getClue().getRowCluesLength();
 
     // return puzzle.getClue();
   }
 
   @Override
   public int getColCluesLength() {
-    return puzzle.getClue().getColCluesLength();
+    return puzzles.get(Index).getClue().getColCluesLength();
     // return puzzle.getClue().getWidth();
   }
 

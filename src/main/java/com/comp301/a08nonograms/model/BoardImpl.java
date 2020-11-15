@@ -66,7 +66,7 @@ public class BoardImpl implements Board {
       amountShaded++;
     } else {
       board[row][col] = select.SHADED;
-   //   AmountEliminated--;
+      //   AmountEliminated--;
       amountShaded++;
     }
   }
@@ -79,13 +79,13 @@ public class BoardImpl implements Board {
     if (board[row][col] == select.ELIMINATED) {
       board[row][col] = select.SPACE;
       // potential error
-    //  AmountEliminated--;
+      //  AmountEliminated--;
     } else if (board[row][col] == select.SPACE) {
       board[row][col] = select.ELIMINATED;
-    //  AmountEliminated++;
+      //  AmountEliminated++;
     } else {
       board[row][col] = select.SHADED;
-     // AmountEliminated--;
+      // AmountEliminated--;
       amountShaded++;
     }
   }

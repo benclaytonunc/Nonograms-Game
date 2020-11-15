@@ -14,7 +14,6 @@ import javafx.scene.text.Text;
 
 import java.awt.*;
 
-
 public class SquareMaker implements FXComponent {
   private final Controller controller;
   private final int height;
@@ -29,7 +28,7 @@ public class SquareMaker implements FXComponent {
   @Override
   public Parent render() {
     GridPane grid = new GridPane();
-    //BoardImpl s = new BoardImpl(height, width);
+    // BoardImpl s = new BoardImpl(height, width);
 
     for (int i = 0; i < height; i++) {
       for (int k = 0; k < width; k++) {
@@ -45,7 +44,7 @@ public class SquareMaker implements FXComponent {
             (MouseEvent event) -> {
               if (event.getButton() == MouseButton.PRIMARY) {
                 controller.toggleShaded(c, d);
-              } else if(event.getButton() == MouseButton.SECONDARY) {
+              } else if (event.getButton() == MouseButton.SECONDARY) {
                 controller.toggleEliminated(c, d);
               }
             });

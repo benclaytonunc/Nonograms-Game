@@ -20,7 +20,6 @@ public class CluesImpl implements Clues {
 
   public int getShadedTotal() {
     return AmountShaded;
-
   }
 
   @Override
@@ -45,7 +44,7 @@ public class CluesImpl implements Clues {
 
   @Override
   public int getRowCluesLength() {
-    //for(int i = 0; rowClues[].length, )
+    // for(int i = 0; rowClues[].length, )
     return rowClues.length;
   }
 

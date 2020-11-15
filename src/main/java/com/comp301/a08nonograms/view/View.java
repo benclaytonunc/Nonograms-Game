@@ -18,6 +18,7 @@ import java.util.List;
 public class View implements FXComponent {
   private final Controller controller;
   private PuzzleView puzzle;
+
   public View(Controller controller) {
     this.controller = controller;
   }
@@ -33,16 +34,18 @@ public class View implements FXComponent {
     layout.setPadding(new Insets(30, 30, 30, 30));
 
     SquareMaker sqMaker =
-            new SquareMaker(
-                    controller, controller.getClues().getRowCluesLength(), controller.getClues().getColCluesLength());
+        new SquareMaker(
+            controller,
+            controller.getClues().getRowCluesLength(),
+            controller.getClues().getColCluesLength());
     layout.getChildren().add(sqMaker.render());
     PuzzleView puzzle = new PuzzleView(controller, 0);
     puzzleList.getChildren().add(puzzle.render());
-  /*  for (int i = 0; i < clues.get(0).getRowCluesLength(); i++) {
-      String coordinate = clues.get(0).getRowClues(i);
-      layout.getChildren().addAll(new Label("Name:"));
-    }
-*/
+    /*  for (int i = 0; i < clues.get(0).getRowCluesLength(); i++) {
+          String coordinate = clues.get(0).getRowClues(i);
+          layout.getChildren().addAll(new Label("Name:"));
+        }
+    */
     // }
     layout.getChildren().add(puzzleList);
 

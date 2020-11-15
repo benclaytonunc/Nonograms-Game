@@ -10,21 +10,21 @@ public class Puzzle {
     this.board = new BoardImpl(clues.getColCluesLength(), clue.getRowCluesLength());
     this.index = index;
   }
-/*
-  public int getPuzzleIndex() {
-    if (index > 4 | index < 0 ) {
-      throw new RuntimeException("get puzzle index OOB");
+  /*
+    public int getPuzzleIndex() {
+      if (index > 4 | index < 0 ) {
+        throw new RuntimeException("get puzzle index OOB");
+      }
+      return index;
     }
-    return index;
-  }
 
-  public void setPuzzleIndex(int index) {
-    if (index >= 4 | index < 0 ) {
-      throw new RuntimeException("set puzzle index OOB");
+    public void setPuzzleIndex(int index) {
+      if (index >= 4 | index < 0 ) {
+        throw new RuntimeException("set puzzle index OOB");
+      }
+      this.index = index;
     }
-    this.index = index;
-  }
-*/
+  */
   public BoardImpl getBoard() {
     return board;
   }

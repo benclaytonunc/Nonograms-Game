@@ -24,8 +24,8 @@ public class PuzzleView {
   private final int Index;
   private List<Clues> clues;
 
-  public PuzzleView(Controller controller, int Index) { //, List<Clues> clues) {
-  //  this.clues = clues;
+  public PuzzleView(Controller controller, int Index) { // , List<Clues> clues) {
+    //  this.clues = clues;
     this.controller = controller;
     this.Index = Index;
   }
@@ -48,7 +48,7 @@ public class PuzzleView {
     downB.setOnAction(
         (ActionEvent event) -> {
           controller.prevPuzzle();
-        //  newPuzz.setPuzzleIndex(Index - 1);
+          //  newPuzz.setPuzzleIndex(Index - 1);
         });
     layout.getChildren().add(downB);
 
@@ -56,7 +56,7 @@ public class PuzzleView {
     upB.setOnAction(
         (ActionEvent event) -> {
           controller.nextPuzzle();
-        //  newPuzz.setPuzzleIndex(Index + 1);
+          //  newPuzz.setPuzzleIndex(Index + 1);
           // new PuzzleView(controller, Index + 1).render();
         });
     layout.getChildren().add(upB);

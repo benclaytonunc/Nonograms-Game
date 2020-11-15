@@ -44,7 +44,7 @@ public class ModelImpl implements Model {
 
   @Override
   public void setPuzzleIndex(int Index) {
-    if (Index >= getPuzzleCount() || Index < 0 ) {
+    if (Index >= getPuzzleCount() || Index < 0) {
       throw new RuntimeException("set puzzle index OOB");
     }
     this.Index = Index;
@@ -63,40 +63,40 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isSolved() {
-      boolean inside;
-      for (int i = 0; i < puzzle.getClue().getHeight(); i++) {
+    boolean inside;
+    for (int i = 0; i < puzzle.getClue().getHeight(); i++) {
 
-        int numberOfClues = 0;
-        int rowSize = 0;
-        for (int j = 0; j < puzzle.getClue().getRowClues(i).length; j++) {
-          numberOfClues += puzzle.getClue().getRowClues(i)[j];
-        }
-        for (int j = 0; j < puzzle.getBoard().board[i].length; j++) {
-          if (isShaded(i, j)) {
-            rowSize++;
-          }
-        }
-        if (rowSize != numberOfClues) {
-          return false;
+      int numberOfClues = 0;
+      int rowSize = 0;
+      for (int j = 0; j < puzzle.getClue().getRowClues(i).length; j++) {
+        numberOfClues += puzzle.getClue().getRowClues(i)[j];
+      }
+      for (int j = 0; j < puzzle.getBoard().board[i].length; j++) {
+        if (isShaded(i, j)) {
+          rowSize++;
         }
       }
-      for (int i = 0; i < puzzle.getClue().getWidth(); i++) {
-        int rowSize = 0;
-        int numberOfClues = 0;
-        for (int j = 0; j < puzzle.getClue().getColClues(i).length; j++) {
-          numberOfClues += puzzle.getClue().getColClues(i)[j];
-        }
-        for (int j = 0; j < puzzle.getClue().getHeight(); j++) {
-          if (isShaded(j, i)) {
-            rowSize++;
-          }
-        }
-        if (rowSize != numberOfClues) {
-          return false;
+      if (rowSize != numberOfClues) {
+        return false;
+      }
+    }
+    for (int i = 0; i < puzzle.getClue().getWidth(); i++) {
+      int rowSize = 0;
+      int numberOfClues = 0;
+      for (int j = 0; j < puzzle.getClue().getColClues(i).length; j++) {
+        numberOfClues += puzzle.getClue().getColClues(i)[j];
+      }
+      for (int j = 0; j < puzzle.getClue().getHeight(); j++) {
+        if (isShaded(j, i)) {
+          rowSize++;
         }
       }
+      if (rowSize != numberOfClues) {
+        return false;
+      }
+    }
 
-      return true;
+    return true;
   }
 
   @Override

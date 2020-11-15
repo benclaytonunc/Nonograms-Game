@@ -50,7 +50,7 @@ public class ControllerImpl implements Controller {
   @Override
   public void nextPuzzle() {
     if (model.getPuzzleIndex() >= model.getPuzzleCount()) {
-        throw new RuntimeException();
+      throw new RuntimeException();
     } else {
       int index = model.getPuzzleIndex() + 1;
       model.setPuzzleIndex(index);

@@ -145,12 +145,12 @@ public class ModelImpl implements Model {
 
   @Override
   public int[] getRowClues(int Index) {
-    return puzzles.get(Index).getClue().getRowClues(Index);
+    return puzzles.get(this.Index).getClue().getRowClues(Index);
   }
 
   @Override
   public int[] getColClues(int Index) {
-    return puzzles.get(Index).getClue().getColClues(Index);
+    return puzzles.get(this.Index).getClue().getColClues(Index);
   }
 
   @Override

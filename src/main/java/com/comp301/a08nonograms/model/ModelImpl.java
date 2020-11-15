@@ -48,6 +48,7 @@ public class ModelImpl implements Model {
       throw new RuntimeException("set puzzle index OOB");
     }
     this.Index = Index;
+    notifyObservers();
   }
 
   @Override
@@ -62,60 +63,40 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isSolved() {
-    if (puzzles.get(Index).getBoard().getShadedTotal() != puzzles.get(Index).getClue().getShadedTotal()) {
-      return false;
-    }
-    for (int i = 0; i < getHeight(); i++) {
-      int ClusterSize = 0;
-      int clusterIndex = 0;
-      boolean insideCluster = false;
-      for (int k = 0; k < getWidth(); k++) {
-        if (isSpace(i, k)) {
-          insideCluster = true;
-          if (ClusterSize > puzzles.get(Index).getClue().getRowClues(i)[clusterIndex]) {
-            return false;
-          }
-          ClusterSize++;
-        } else {
-          if (insideCluster) {
-            if (ClusterSize != puzzles.get(Index).getClue().getRowClues(i)[clusterIndex]) {
-              return false;
-            } else {
-              insideCluster = false;
-              ClusterSize = 0;
-              clusterIndex++;
-            }
+      boolean inside;
+      for (int i = 0; i < puzzle.getClue().getHeight(); i++) {
+
+        int numberOfClues = 0;
+        int rowSize = 0;
+        for (int j = 0; j < puzzle.getClue().getRowClues(i).length; j++) {
+          numberOfClues += puzzle.getClue().getRowClues(i)[j];
+        }
+        for (int j = 0; j < puzzle.getBoard().board[i].length; j++) {
+          if (isShaded(i, j)) {
+            rowSize++;
           }
         }
-      }
-    }
-    for (int i = 0; i < getWidth(); i++) {
-      int ClusterSize = 0;
-      int clusterIndex = 0;
-      boolean insideCluster = false;
-      for (int k = 0; k < getHeight(); k++) {
-        if (isSpace(k, i)) {
+        if (rowSize != numberOfClues) {
           return false;
-        } else if (isShaded(k, i)) {
-          insideCluster = true;
-          if (ClusterSize > puzzles.get(Index).getClue().getColClues(i)[clusterIndex]) {
-            return false;
-          }
-          ClusterSize++;
-        } else {
-          if (insideCluster) {
-            if (ClusterSize != puzzles.get(Index).getClue().getColClues(i)[clusterIndex]) {
-              return false;
-            } else {
-              insideCluster = false;
-              ClusterSize = 0;
-              clusterIndex++;
-            }
-          }
         }
       }
-    }
-    return true;
+      for (int i = 0; i < puzzle.getClue().getWidth(); i++) {
+        int rowSize = 0;
+        int numberOfClues = 0;
+        for (int j = 0; j < puzzle.getClue().getColClues(i).length; j++) {
+          numberOfClues += puzzle.getClue().getColClues(i)[j];
+        }
+        for (int j = 0; j < puzzle.getClue().getHeight(); j++) {
+          if (isShaded(j, i)) {
+            rowSize++;
+          }
+        }
+        if (rowSize != numberOfClues) {
+          return false;
+        }
+      }
+
+      return true;
   }
 
   @Override

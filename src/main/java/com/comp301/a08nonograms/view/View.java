@@ -8,6 +8,7 @@ import com.comp301.a08nonograms.model.Puzzle;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -30,18 +31,18 @@ public class View implements FXComponent {
     layout.setSpacing(20);
     layout.setStyle("-fx-border-color: #888888");
     layout.setPadding(new Insets(30, 30, 30, 30));
+
     SquareMaker sqMaker =
             new SquareMaker(
                     controller, controller.getClues().getRowCluesLength(), controller.getClues().getColCluesLength());
     layout.getChildren().add(sqMaker.render());
-
-    // Playlist
-
-
-    //List<Puzzle> puzz =
-    // for (int i = 0; i < controller.getPuzzleCount(); i++) {
     PuzzleView puzzle = new PuzzleView(controller, 0);
     puzzleList.getChildren().add(puzzle.render());
+  /*  for (int i = 0; i < clues.get(0).getRowCluesLength(); i++) {
+      String coordinate = clues.get(0).getRowClues(i);
+      layout.getChildren().addAll(new Label("Name:"));
+    }
+*/
     // }
     layout.getChildren().add(puzzleList);
 

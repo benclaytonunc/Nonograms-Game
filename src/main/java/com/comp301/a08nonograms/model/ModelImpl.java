@@ -18,11 +18,6 @@ public class ModelImpl implements Model {
     if (clues == null) {
       throw new RuntimeException("no clues!");
     }
-    this.puzzles = new ArrayList<>();
-
-    for (int i = 0; i < clues.size(); i++) {
-      puzzles.add(new Puzzle(clues.get(i), i));
-    }
     this.PuzzleIndex = 0;
     this.cluesPuzz = new ArrayList<>();
     cluesPuzz.addAll(clues);

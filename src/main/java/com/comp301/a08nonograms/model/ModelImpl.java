@@ -87,7 +87,7 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isShaded(int row, int col) {
-
+//
     return board.isShaded(row, col);
   }
 

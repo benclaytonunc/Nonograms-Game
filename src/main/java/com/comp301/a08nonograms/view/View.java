@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
 import java.util.List;
@@ -71,6 +72,15 @@ public class View implements FXComponent {
     // layout.getChildren().add(sqMaker.render());
     cluesAndGrid.getChildren().add(sqMaker.render());
     rowcolgrid.getChildren().add(cluesAndGrid);
+    if (controller.isSolved()) {
+      Text text = new Text();
+      text.setText("You Won! Good \n" + " Job you can \n" + "count sorta!");
+      text.setFill(Color.CADETBLUE);
+      text.setStrokeWidth(5);
+      text.setX(50);
+      text.setY(50);
+      rowcolgrid.getChildren().add(text);
+    }
     layout.getChildren().add(rowcolgrid);
     PuzzleView puzzle = new PuzzleView(controller, 0);
     puzzleList.getChildren().add(puzzle.render());

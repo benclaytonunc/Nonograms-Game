@@ -51,13 +51,7 @@ public class SquareMaker implements FXComponent {
         grid.add(butt, c, d);
       }
     }
-    if (controller.isSolved()) {
-      Text text = new Text();
-      text.setText("You Won! good job");
-      text.setX(50);
-      text.setY(50);
-      grid.add(text, 50, 50);
-    }
+
 
     return grid;
   }

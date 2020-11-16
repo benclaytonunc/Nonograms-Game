@@ -63,39 +63,25 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isSolved() {
-    boolean inside;
-    for (int i = 0; i < puzzle.getClue().getHeight(); i++) {
-
-      int numberOfClues = 0;
-      int rowSize = 0;
-      for (int j = 0; j < puzzle.getClue().getRowClues(i).length; j++) {
-        numberOfClues += puzzle.getClue().getRowClues(i)[j];
+    Clues clews = clues.get(Index);
+    int[] rows = new int[clews.getHeight()];
+    int[] cols = new int[clews.getWidth()];
+    for (int i = 0; i < clews.getHeight(); i++) {
+      for (int j = 0; j < clews.getWidth(); j++) {
+        rows[i] += clews.getRowClues(i)[j];
       }
-      for (int j = 0; j < puzzle.getBoard().board[i].length; j++) {
-        if (isShaded(i, j)) {
-          rowSize++;
+    }
+    for (int x = 0; x < clews.getHeight(); x++) {
+      int rowTotal = 0;
+      for (int y = 0; y < clews.getWidth(); y++) {
+        if (board.isShaded(x, y)) {
+          rowTotal += 1;
         }
       }
-      if (rowSize != numberOfClues) {
+      if (rowTotal == rows[x]) {
         return false;
       }
     }
-    for (int i = 0; i < puzzle.getClue().getWidth(); i++) {
-      int rowSize = 0;
-      int numberOfClues = 0;
-      for (int j = 0; j < puzzle.getClue().getColClues(i).length; j++) {
-        numberOfClues += puzzle.getClue().getColClues(i)[j];
-      }
-      for (int j = 0; j < puzzle.getClue().getHeight(); j++) {
-        if (isShaded(j, i)) {
-          rowSize++;
-        }
-      }
-      if (rowSize != numberOfClues) {
-        return false;
-      }
-    }
-
     return true;
   }
 

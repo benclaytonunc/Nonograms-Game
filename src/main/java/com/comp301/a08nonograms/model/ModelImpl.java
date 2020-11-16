@@ -13,12 +13,12 @@ public class ModelImpl implements Model {
     if (clues == null) {
       throw new RuntimeException("no clues!");
     }
+
+    this.cluesPuzz = new ArrayList<>();
+    for (int i = 0; i < clues.size(); i++) {
+       cluesPuzz.add(clues.get(i));
+    }
     this.PuzzleIndex = 0;
-    this.cluesPuzz = clues;
-
-    //for (int i = 0; i < clues.size(); i++) {
-      //cluesPuzz.add(i, clues.get(i));
-
     // cluesPuzz.addAll(clues);
     this.observers = new ArrayList<>();
     this.board = new BoardImpl(clues.get(0).getWidth(), clues.get(0).getHeight());
@@ -45,7 +45,7 @@ public class ModelImpl implements Model {
       throw new RuntimeException("set puzzle index OOB");
     }
     this.PuzzleIndex = Index;
-    board = new BoardImpl(cluesPuzz.get(Index).getWidth(), cluesPuzz.get(Index).getHeight());
+    board = new BoardImpl(cluesPuzz.get(PuzzleIndex).getWidth(), cluesPuzz.get(PuzzleIndex).getHeight());
     notifyObservers();
   }
 
@@ -76,7 +76,7 @@ public class ModelImpl implements Model {
           rowTotal += 1;
         }
       }
-      if (rowTotal == rows[x]) {
+      if (rowTotal != rows[x]) {
         return false;
       }
     }

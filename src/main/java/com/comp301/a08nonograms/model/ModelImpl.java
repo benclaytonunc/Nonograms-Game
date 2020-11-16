@@ -20,7 +20,11 @@ public class ModelImpl implements Model {
     }
     this.PuzzleIndex = 0;
     this.cluesPuzz = new ArrayList<>();
-    cluesPuzz.addAll(clues);
+
+    for (int i = 0; i < clues.size(); i++) {
+      cluesPuzz.add(i, clues.get(i));
+    }
+    // cluesPuzz.addAll(clues);
     this.observers = new ArrayList<>();
     this.board = new BoardImpl(clues.get(0).getWidth(), clues.get(0).getHeight());
   }

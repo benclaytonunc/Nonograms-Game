@@ -4,25 +4,25 @@ import com.comp301.a08nonograms.controller.Controller;
 import com.comp301.a08nonograms.controller.ControllerImpl;
 import com.comp301.a08nonograms.model.BoardImpl;
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.scene.control.Label;
 
 import java.awt.*;
 
 public class SquareMaker implements FXComponent {
   private final Controller controller;
-  private final int height;
-  private final int width;
 
-  public SquareMaker(Controller controller, int height, int width) {
+  public SquareMaker(Controller controller) {
     this.controller = controller;
-    this.height = height;
-    this.width = width;
   }
 
   @Override
@@ -30,8 +30,8 @@ public class SquareMaker implements FXComponent {
     GridPane grid = new GridPane();
     // BoardImpl s = new BoardImpl(height, width);
 
-    for (int i = 0; i < height; i++) {
-      for (int k = 0; k < width; k++) {
+    for (int i = 0; i < controller.getClues().getHeight(); i++) {
+      for (int k = 0; k < controller.getClues().getWidth(); k++) {
         Button butt = new Button();
         int c = i;
         int d = k;

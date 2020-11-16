@@ -61,6 +61,15 @@ public class PuzzleView {
         });
     layout.getChildren().add(upB);
 
+    Button randomB = new Button("Random");
+    randomB.setOnAction(
+        (ActionEvent event) -> {
+          controller.randPuzzle();
+          //  newPuzz.setPuzzleIndex(Index + 1);
+          // new PuzzleView(controller, Index + 1).render();
+        });
+    layout.getChildren().add(randomB);
+
     // Title
     Label title = new Label(makeLabelString());
     layout.getChildren().add(title);

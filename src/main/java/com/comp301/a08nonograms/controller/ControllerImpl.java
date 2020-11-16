@@ -51,6 +51,8 @@ public class ControllerImpl implements Controller {
   public void nextPuzzle() {
     if (model.getPuzzleIndex() >= model.getPuzzleCount()) {
       throw new RuntimeException();
+    } else if (model.getPuzzleIndex() == 4) {
+      model.setPuzzleIndex(0);
     } else {
       int index = model.getPuzzleIndex() + 1;
       model.setPuzzleIndex(index);
@@ -59,8 +61,10 @@ public class ControllerImpl implements Controller {
 
   @Override
   public void prevPuzzle() {
-    if (model.getPuzzleIndex() <= 0) {
+    if (model.getPuzzleIndex() < 0) {
       throw new RuntimeException();
+    } else if (model.getPuzzleIndex() == 0) {
+      model.setPuzzleIndex(4);
     } else {
       int index = model.getPuzzleIndex() - 1;
       model.setPuzzleIndex(index);
@@ -69,7 +73,8 @@ public class ControllerImpl implements Controller {
 
   @Override
   public void randPuzzle() {
-    model.setPuzzleIndex((int) (Math.random() * (getPuzzleCount() + 1)));
+    int random = (int) (Math.random() * (getPuzzleCount() + 1));
+    model.setPuzzleIndex(random);
   }
 
   @Override

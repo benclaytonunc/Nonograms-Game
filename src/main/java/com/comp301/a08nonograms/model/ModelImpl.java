@@ -65,7 +65,7 @@ public class ModelImpl implements Model {
     int[] rows = new int[clews.getHeight()];
     int[] cols = new int[clews.getWidth()];
     for (int i = 0; i < clews.getHeight(); i++) {
-      for (int j = 0; j < clews.getWidth(); j++) {
+      for (int j = 0; j < clews.getRowCluesLength(); j++) {
         rows[i] += clews.getRowClues(i)[j];
       }
     }

@@ -16,7 +16,7 @@ public class ModelImpl implements Model {
 
     this.cluesPuzz = new ArrayList<>();
     for (int i = 0; i < clues.size(); i++) {
-       cluesPuzz.add(clues.get(i));
+      cluesPuzz.add(clues.get(i));
     }
     this.PuzzleIndex = 0;
     // cluesPuzz.addAll(clues);
@@ -45,7 +45,9 @@ public class ModelImpl implements Model {
       throw new RuntimeException("set puzzle index OOB");
     }
     this.PuzzleIndex = Index;
-    board = new BoardImpl(cluesPuzz.get(PuzzleIndex).getWidth(), cluesPuzz.get(PuzzleIndex).getHeight());
+    board =
+        new BoardImpl(
+            cluesPuzz.get(PuzzleIndex).getWidth(), cluesPuzz.get(PuzzleIndex).getHeight());
     notifyObservers();
   }
 
@@ -62,8 +64,8 @@ public class ModelImpl implements Model {
   @Override
   public boolean isSolved() {
     Clues clews = cluesPuzz.get(PuzzleIndex);
-    int[] rows = new int[clews.getHeight()];
     int[] cols = new int[clews.getWidth()];
+    int[] rows = new int[clews.getHeight()];
     for (int i = 0; i < clews.getHeight(); i++) {
       for (int j = 0; j < clews.getRowCluesLength(); j++) {
         rows[i] += clews.getRowClues(i)[j];

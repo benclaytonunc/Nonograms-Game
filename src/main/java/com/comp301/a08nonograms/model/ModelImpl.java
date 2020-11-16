@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ModelImpl implements Model {
-  private List<Clues> clues;
+  private List<Clues> cluesPuzz;
   private ArrayList<Puzzle> puzzles;
 
   public Puzzle puzzle;
@@ -16,19 +16,21 @@ public class ModelImpl implements Model {
 
   public ModelImpl(List<Clues> clues) {
     this.puzzles = new ArrayList<>();
+
     for (int i = 0; i < clues.size(); i++) {
       puzzles.add(new Puzzle(clues.get(i), i));
     }
     this.puzzle = puzzles.get(0);
     this.Index = 0;
-    this.clues = new ArrayList<>(clues);
+    this.cluesPuzz = new ArrayList<>();
+    cluesPuzz.addAll(clues);
     this.observers = new ArrayList<>();
     this.clue = clues.get(Index);
   }
 
   @Override
   public Clues getClue() {
-    clues.get(getPuzzleIndex());
+    cluesPuzz.get(getPuzzleIndex());
     return clue;
   }
 
@@ -63,7 +65,7 @@ public class ModelImpl implements Model {
 
   @Override
   public boolean isSolved() {
-    Clues clews = clues.get(Index);
+    Clues clews = cluesPuzz.get(Index);
     int[] rows = new int[clews.getHeight()];
     int[] cols = new int[clews.getWidth()];
     for (int i = 0; i < clews.getHeight(); i++) {

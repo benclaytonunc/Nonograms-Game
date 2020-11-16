@@ -52,7 +52,6 @@ public class SquareMaker implements FXComponent {
       }
     }
 
-
     return grid;
   }
 }

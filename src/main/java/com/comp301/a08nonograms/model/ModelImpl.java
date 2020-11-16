@@ -5,11 +5,6 @@ import java.util.List;
 
 public class ModelImpl implements Model {
   private List<Clues> cluesPuzz;
-  private ArrayList<Puzzle> puzzles;
-
-  public Puzzle puzzle;
-  private Clues clue;
-
   private Board board;
   private int PuzzleIndex;
   private List<ModelObserver> observers;
@@ -19,11 +14,11 @@ public class ModelImpl implements Model {
       throw new RuntimeException("no clues!");
     }
     this.PuzzleIndex = 0;
-    this.cluesPuzz = new ArrayList<>();
+    this.cluesPuzz = clues;
 
-    for (int i = 0; i < clues.size(); i++) {
-      cluesPuzz.add(i, clues.get(i));
-    }
+    //for (int i = 0; i < clues.size(); i++) {
+      //cluesPuzz.add(i, clues.get(i));
+
     // cluesPuzz.addAll(clues);
     this.observers = new ArrayList<>();
     this.board = new BoardImpl(clues.get(0).getWidth(), clues.get(0).getHeight());
